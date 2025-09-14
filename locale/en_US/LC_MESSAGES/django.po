@@ -1,0 +1,234 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-09-14 13:26-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: content/admin.py:19
+msgid "Mark as active"
+msgstr "Mark as active"
+
+#: content/admin.py:28
+msgid "Mark as inactive"
+msgstr "Mark as inactive"
+
+#: content/admin.py:60 content/admin.py:107 content/admin.py:143
+#: content/admin.py:209
+msgid "Global"
+msgstr "Global"
+
+#: content/admin.py:62 content/admin.py:108 content/admin.py:155
+#: content/admin.py:210
+msgid "Translations"
+msgstr "Translations"
+
+#: content/admin.py:109 content/admin.py:211
+msgid "Metadata"
+msgstr "Metadata"
+
+#: content/admin.py:176 content/models.py:85
+msgid "URL"
+msgstr "URL"
+
+#: content/admin.py:240
+msgid "Mark as new"
+msgstr "Mark as new"
+
+#: content/admin.py:244
+msgid "Mark as read"
+msgstr "Mark as read"
+
+#: content/admin.py:248
+msgid "Mark as archived"
+msgstr "Mark as archived"
+
+#: content/models.py:11
+msgid "Logo"
+msgstr "Logo"
+
+#: content/models.py:12
+msgid "Default Image"
+msgstr "Default Image"
+
+#: content/models.py:15
+msgid "Site Name"
+msgstr "Site Name"
+
+#: content/models.py:16
+msgid "Tagline"
+msgstr "Tagline"
+
+#: content/models.py:17
+msgid "Bio"
+msgstr "Bio"
+
+#: content/models.py:18
+msgid "Default Title"
+msgstr "Default Title"
+
+#: content/models.py:20
+msgid "Default Description"
+msgstr "Default Description"
+
+#: content/models.py:31
+msgid "Site Setting"
+msgstr "Site Setting"
+
+#: content/models.py:32
+msgid "Site Settings"
+msgstr "Site Settings"
+
+#: content/models.py:37
+msgid "Page"
+msgstr "Page"
+
+#: content/models.py:39
+msgid "Key"
+msgstr "Key"
+
+#: content/models.py:41
+msgid "Kind"
+msgstr "Kind"
+
+#: content/models.py:43 content/models.py:48 content/models.py:108
+msgid "Text"
+msgstr "Text"
+
+#: content/models.py:43
+msgid "Markdown"
+msgstr "Markdown"
+
+#: content/models.py:43
+msgid "HTML"
+msgstr "HTML"
+
+#: content/models.py:55
+msgid "Content Block"
+msgstr "Content Block"
+
+#: content/models.py:56
+msgid "Content Blocks"
+msgstr "Content Blocks"
+
+#: content/models.py:72
+msgid "Parent"
+msgstr "Parent"
+
+#: content/models.py:75 content/models.py:103
+msgid "Order"
+msgstr "Order"
+
+#: content/models.py:77
+#, fuzzy
+#| msgid "Mark as active"
+msgid "Is active?"
+msgstr "Mark as active"
+
+#: content/models.py:79
+msgid "Menu Key"
+msgstr "Menu Key"
+
+#: content/models.py:83
+msgid "Label"
+msgstr "Label"
+
+#: content/models.py:84
+msgid "Title"
+msgstr "Title"
+
+#: content/models.py:95
+msgid "Navigation Item"
+msgstr "Navigation Item"
+
+#: content/models.py:96
+msgid "Navigation Items"
+msgstr "Navigation Items"
+
+#: content/models.py:101
+msgid "Author's Name"
+msgstr "Author's Name"
+
+#: content/models.py:102
+msgid "Photo"
+msgstr "Photo"
+
+#: content/models.py:106
+msgid "Author's Role"
+msgstr "Author's Role"
+
+#: content/models.py:107
+msgid "Company"
+msgstr "Company"
+
+#: content/models.py:118
+msgid "Testimonial"
+msgstr "Testimonial"
+
+#: content/models.py:119
+msgid "Testimonials"
+msgstr "Testimonials"
+
+#: content/models.py:124 core/models.py:16
+msgid "Name"
+msgstr "Name"
+
+#: content/models.py:125
+msgid "E-mail"
+msgstr "E-mail"
+
+#: content/models.py:126
+msgid "Subject"
+msgstr "Subject"
+
+#: content/models.py:127
+msgid "Message"
+msgstr "Message"
+
+#: content/models.py:129
+msgid "Status"
+msgstr "Status"
+
+#: content/models.py:132
+msgid "New"
+msgstr "New"
+
+#: content/models.py:133
+msgid "Read"
+msgstr "Read"
+
+#: content/models.py:134
+msgid "Archived"
+msgstr "Archived"
+
+#: content/models.py:140
+msgid "Contact Message"
+msgstr "Contact Message"
+
+#: content/models.py:141
+msgid "Contact Messages"
+msgstr "Contact Messages"
+
+#: core/models.py:8
+msgid "Created At"
+msgstr "Created At"
+
+#: core/models.py:9
+msgid "Updated At"
+msgstr "Updated At"
+
+#: core/models.py:17
+msgid "Slug"
+msgstr "Slug"
