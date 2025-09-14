@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "parler",
     "content",
     "core",
+    "portfolio",
 ]
 
 MIDDLEWARE = [
