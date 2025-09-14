@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-14 13:26-0300\n"
+"POT-Creation-Date: 2025-09-14 15:13-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,33 +26,29 @@ msgstr "Marcar como ativo"
 msgid "Mark as inactive"
 msgstr "Marcar como inativo"
 
-#: content/admin.py:60 content/admin.py:107 content/admin.py:143
-#: content/admin.py:209
+#: content/admin.py:60 content/admin.py:107 content/admin.py:142
+#: content/admin.py:195
 msgid "Global"
 msgstr "Global"
 
-#: content/admin.py:62 content/admin.py:108 content/admin.py:155
-#: content/admin.py:210
+#: content/admin.py:62 content/admin.py:108 content/admin.py:153
+#: content/admin.py:196
 msgid "Translations"
 msgstr "Traduções"
 
-#: content/admin.py:109 content/admin.py:211
+#: content/admin.py:109 content/admin.py:197
 msgid "Metadata"
 msgstr "Metadados"
 
-#: content/admin.py:176 content/models.py:85
-msgid "URL"
-msgstr "URL"
-
-#: content/admin.py:240
+#: content/admin.py:226
 msgid "Mark as new"
 msgstr "Marcar como novo"
 
-#: content/admin.py:244
+#: content/admin.py:230
 msgid "Mark as read"
 msgstr "Marcar como lido"
 
-#: content/admin.py:248
+#: content/admin.py:234
 msgid "Mark as archived"
 msgstr "Marcar como arquivado"
 
@@ -150,6 +146,10 @@ msgstr "Rótulo"
 msgid "Title"
 msgstr "Título"
 
+#: content/models.py:85
+msgid "URL"
+msgstr "URL"
+
 #: content/models.py:95
 msgid "Navigation Item"
 msgstr "Item de navegação"
@@ -233,3 +233,19 @@ msgstr "Atualizado em"
 #: core/models.py:17
 msgid "Slug"
 msgstr "Slug"
+
+#: core/models.py:19
+msgid "Language"
+msgstr "Idioma"
+
+#: core/models.py:22
+msgid "e.g., 'en-us', 'pt-br'"
+msgstr "ex: 'en-us', 'pt-br'"
+
+#: core/models.py:34
+msgid "Tag"
+msgstr "Tag"
+
+#: core/models.py:35
+msgid "Tags"
+msgstr "Tags"
