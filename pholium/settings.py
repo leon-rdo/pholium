@@ -80,6 +80,15 @@ CORS_URLS_REGEX = os.getenv("CORS_URLS_REGEX", r"^.*$")
 CSRF_TRUSTED_ORIGINS = _csv_env("CSRF_TRUSTED_ORIGINS")
 
 
+# Django REST Framework configuration
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
+    ],
+    "PAGE_SIZE": 20,
+}
+
+
 ROOT_URLCONF = "pholium.urls"
 
 TEMPLATES = [
