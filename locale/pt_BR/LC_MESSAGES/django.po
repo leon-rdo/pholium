@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-14 15:44-0300\n"
+"POT-Creation-Date: 2025-09-22 20:10-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -142,7 +142,7 @@ msgstr "Chave-Menu"
 msgid "Label"
 msgstr "Rótulo"
 
-#: content/models.py:84 portfolio/models.py:67
+#: content/models.py:84 portfolio/models.py:65
 msgid "Title"
 msgstr "Título"
 
@@ -170,7 +170,7 @@ msgstr "Foto"
 msgid "Author's Role"
 msgstr "Nome do Autor"
 
-#: content/models.py:107 portfolio/models.py:123
+#: content/models.py:107 portfolio/models.py:120
 msgid "Company"
 msgstr "Empresa"
 
@@ -183,7 +183,7 @@ msgid "Testimonials"
 msgstr "Depoimentos"
 
 #: content/models.py:124 core/models.py:16 portfolio/models.py:12
-#: portfolio/models.py:40
+#: portfolio/models.py:39
 msgid "Name"
 msgstr "Nome"
 
@@ -199,7 +199,7 @@ msgstr "Assunto"
 msgid "Message"
 msgstr "Mensagem"
 
-#: content/models.py:129 portfolio/models.py:81
+#: content/models.py:129 portfolio/models.py:79
 msgid "Status"
 msgstr "Status"
 
@@ -211,7 +211,7 @@ msgstr "Novo"
 msgid "Read"
 msgstr "Lido"
 
-#: content/models.py:134 portfolio/models.py:63
+#: content/models.py:134 portfolio/models.py:61
 msgid "Archived"
 msgstr "Arquivado"
 
@@ -231,8 +231,8 @@ msgstr "Criado em"
 msgid "Updated At"
 msgstr "Atualizado em"
 
-#: core/models.py:17 portfolio/models.py:13 portfolio/models.py:41
-#: portfolio/models.py:68
+#: core/models.py:17 portfolio/models.py:13 portfolio/models.py:40
+#: portfolio/models.py:66
 msgid "Slug"
 msgstr "Slug"
 
@@ -248,9 +248,21 @@ msgstr "ex: 'en-us', 'pt-br'"
 msgid "Tag"
 msgstr "Tag"
 
-#: core/models.py:35 portfolio/models.py:91
+#: core/models.py:35 portfolio/models.py:89
 msgid "Tags"
 msgstr "Tags"
+
+#: core/utils/translations.py:104
+msgid "The 'translations' field must be an object."
+msgstr "O campo 'translations' deve ser um objeto."
+
+#: core/utils/translations.py:111
+msgid "Translation for '"
+msgstr "Tradução para '"
+
+#: core/utils/translations.py:111
+msgid "' must be an object."
+msgstr "' deve ser um objeto."
 
 #: portfolio/models.py:16
 msgid "Level"
@@ -268,104 +280,108 @@ msgstr "Ícone (Classe CSS, etc.)"
 msgid "Skill"
 msgstr "Habilidade"
 
-#: portfolio/models.py:26 portfolio/models.py:94
+#: portfolio/models.py:26 portfolio/models.py:92
 msgid "Skills"
 msgstr "Habilidades"
 
-#: portfolio/models.py:45 portfolio/models.py:85
+#: portfolio/models.py:44 portfolio/models.py:83
 msgid "Category"
 msgstr "Categoria"
 
-#: portfolio/models.py:46
+#: portfolio/models.py:45
 msgid "Categories"
 msgstr "Categorias"
 
-#: portfolio/models.py:61
+#: portfolio/models.py:59
 msgid "Draft"
 msgstr "Rascunho"
 
-#: portfolio/models.py:62
+#: portfolio/models.py:60
 msgid "Published"
 msgstr "Publicado"
 
-#: portfolio/models.py:69
+#: portfolio/models.py:67
 msgid "Summary"
 msgstr "Resumo"
 
-#: portfolio/models.py:70 portfolio/models.py:126 portfolio/models.py:146
+#: portfolio/models.py:68 portfolio/models.py:123 portfolio/models.py:143
 msgid "Description"
 msgstr "Descrição"
 
-#: portfolio/models.py:73 portfolio/models.py:128 portfolio/models.py:148
+#: portfolio/models.py:71 portfolio/models.py:125 portfolio/models.py:145
 msgid "Start date"
 msgstr "Data de Início"
 
-#: portfolio/models.py:74 portfolio/models.py:129 portfolio/models.py:149
+#: portfolio/models.py:72 portfolio/models.py:126 portfolio/models.py:146
 msgid "End date"
 msgstr "Data de Fim"
 
-#: portfolio/models.py:75
+#: portfolio/models.py:73
 msgid "Website URL"
 msgstr "URL do Website"
 
-#: portfolio/models.py:76
+#: portfolio/models.py:74
 msgid "Repository URL"
 msgstr "URL do Repositório"
 
-#: portfolio/models.py:78
+#: portfolio/models.py:76
 msgid "Cover image"
 msgstr "Imagem da Capa"
 
-#: portfolio/models.py:98
+#: portfolio/models.py:96
 #, fuzzy
 #| msgid "Author's Name"
 msgid "Author"
 msgstr "Nome do autor"
 
-#: portfolio/models.py:103
+#: portfolio/models.py:101
 msgid "Featured"
 msgstr "Patrocinado"
 
-#: portfolio/models.py:104
+#: portfolio/models.py:102
 msgid "Sort order"
 msgstr "Ordem"
 
-#: portfolio/models.py:107
+#: portfolio/models.py:105
 msgid "Project"
 msgstr "Projeto"
 
-#: portfolio/models.py:108
+#: portfolio/models.py:106
 msgid "Projects"
 msgstr "Projetos"
 
-#: portfolio/models.py:124
+#: portfolio/models.py:121
 msgid "Role"
 msgstr "Cargo"
 
-#: portfolio/models.py:125
+#: portfolio/models.py:122
 msgid "Location"
 msgstr "Local"
 
-#: portfolio/models.py:130
+#: portfolio/models.py:127
 msgid "Currently working"
 msgstr "Trabalhando aqui atualmente"
 
-#: portfolio/models.py:133
+#: portfolio/models.py:130
 msgid "Experience"
 msgstr "Experiência"
 
-#: portfolio/models.py:134
+#: portfolio/models.py:131
 msgid "Experiences"
 msgstr "Experiências"
 
-#: portfolio/models.py:144
+#: portfolio/models.py:141
 msgid "Institution"
 msgstr "Instituição"
 
-#: portfolio/models.py:145
+#: portfolio/models.py:142
 msgid "Degree"
 msgstr "Grau"
 
-#: portfolio/models.py:152 portfolio/models.py:153
+#: portfolio/models.py:149 portfolio/models.py:150
 msgid "Education"
 msgstr "Educação"
+
+#, python-brace-format
+#~ msgid "Translation for '{lang_code}' must be an object."
+#~ msgstr "Tradução para"
