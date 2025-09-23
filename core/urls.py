@@ -5,6 +5,7 @@ app_name = "core"
 router = DefaultRouter()
 
 import content.urls
+import portfolio.urls
 
 urlpatterns = [
     path("", include(router.urls)),
