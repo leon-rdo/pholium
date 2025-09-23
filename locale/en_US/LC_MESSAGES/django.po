@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-22 20:10-0300\n"
+"POT-Creation-Date: 2025-09-22 23:24-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,10 @@ msgstr "Mark as read"
 #: content/admin.py:234
 msgid "Mark as archived"
 msgstr "Mark as archived"
+
+#: content/apps.py:8
+msgid "Content Management"
+msgstr "Contact Management"
 
 #: content/models.py:11
 msgid "Logo"
@@ -222,6 +226,10 @@ msgstr "Contact Message"
 msgid "Contact Messages"
 msgstr "Contact Messages"
 
+#: core/apps.py:8
+msgid "Core"
+msgstr "Core"
+
 #: core/models.py:8
 msgid "Created At"
 msgstr "Created At"
@@ -262,6 +270,26 @@ msgstr "Translation for '"
 #: core/utils/translations.py:111
 msgid "' must be an object."
 msgstr "' must be an object."
+
+#: pholium/jazzmin.py:6
+msgid "Pholium Admin"
+msgstr "Pholium Admin"
+
+#: pholium/jazzmin.py:22
+msgid "Welcome to the Pholium"
+msgstr "Welcome to the Pholium"
+
+#: pholium/jazzmin.py:36
+msgid "Home"
+msgstr "Home"
+
+#: pholium/jazzmin.py:39
+msgid "Source Code"
+msgstr "Source Code"
+
+#: portfolio/apps.py:8
+msgid "Portfolio"
+msgstr "Portfolio"
 
 #: portfolio/models.py:16
 msgid "Level"
