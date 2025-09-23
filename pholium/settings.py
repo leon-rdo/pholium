@@ -14,6 +14,8 @@ import os
 from dotenv import load_dotenv
 from pathlib import Path
 
+from .jazzmin import JAZZMIN_SETTINGS
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -105,6 +107,9 @@ TEMPLATES = [
         },
     },
 ]
+
+JAZZMIN_SETTINGS = JAZZMIN_SETTINGS
+JAZZMIN_UI_TWEAKS = {"theme": "solar"}
 
 WSGI_APPLICATION = "pholium.wsgi.application"
 
