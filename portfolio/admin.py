@@ -1,5 +1,7 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
+
+from core.admin import ImageInline
 from .models import Skill, Category, Project, Experience, Education
 
 
@@ -44,6 +46,7 @@ class ProjectAdmin(TranslatableAdmin):
     )
     filter_horizontal = ("tags", "skills")
     ordering = ("-featured", "sort_order", "-created_at")
+    inlines = [ImageInline]
 
     def get_prepopulated_fields(self, request, obj=None):
         return {"slug": ("title",)}
@@ -68,6 +71,7 @@ class ExperienceAdmin(TranslatableAdmin):
     )
     list_filter = ("current",)
     ordering = ("-start_date",)
+    inlines = [ImageInline]
 
 
 @admin.register(Education)
@@ -82,3 +86,4 @@ class EducationAdmin(TranslatableAdmin):
     )
     search_fields = ("translations__institution", "translations__degree")
     ordering = ("-start_date",)
+    inlines = [ImageInline]

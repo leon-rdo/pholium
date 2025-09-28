@@ -87,6 +87,7 @@ JAZZMIN_SETTINGS = {
         "portfolio.Education": "fas fa-graduation-cap",
         "core": "fas fa-wrench",
         "core.Tag": "fas fa-tag",
+        "core.Image": "fas fa-image",
     },
     # Icons that are used when one is not manually specified
     "default_icon_parents": "fas fa-chevron-circle-right",

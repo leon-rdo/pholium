@@ -1,5 +1,6 @@
+from django.contrib.contenttypes.fields import GenericRelation
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 from parler.models import TranslatableModel, TranslatedFields
@@ -100,6 +101,9 @@ class Project(TranslatableModel, TimeStamped):
     )
     featured = models.BooleanField(_("Featured"), default=False)
     sort_order = models.PositiveIntegerField(_("Sort order"), default=0)
+    images = GenericRelation(
+        "core.Image", related_query_name="projects", verbose_name=_("Images")
+    )
 
     class Meta:
         verbose_name = _("Project")
@@ -125,6 +129,9 @@ class Experience(TranslatableModel, TimeStamped):
     start_date = models.DateField(_("Start date"))
     end_date = models.DateField(_("End date"), null=True, blank=True)
     current = models.BooleanField(_("Currently working"), default=False)
+    images = GenericRelation(
+        "core.Image", related_query_name="experiences", verbose_name=_("Images")
+    )
 
     class Meta:
         verbose_name = _("Experience")
@@ -144,6 +151,9 @@ class Education(TranslatableModel, TimeStamped):
     )
     start_date = models.DateField(_("Start date"), null=True, blank=True)
     end_date = models.DateField(_("End date"), null=True, blank=True)
+    images = GenericRelation(
+        "core.Image", related_query_name="education", verbose_name=_("Images")
+    )
 
     class Meta:
         verbose_name = _("Education")

@@ -3,6 +3,8 @@ from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 from parler.admin import TranslatableAdmin
 
+from core.admin import ImageInline
+
 from .models import (
     SiteSetting,
     ContentBlock,
@@ -108,6 +110,7 @@ class ContentBlockAdmin(TranslatableAdmin):
         (_("Translations"), {"fields": ("text",)}),
         (_("Metadata"), {"fields": ("created_at", "updated_at")}),
     )
+    inlines = [ImageInline]
 
 
 # =========================

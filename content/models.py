@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.contenttypes.fields import GenericRelation
 from django.core.validators import MinValueValidator
 from django.utils.translation import gettext_lazy as _
 
@@ -46,6 +47,9 @@ class ContentBlock(TranslatableModel, TimeStamped):
 
     translations = TranslatedFields(
         text=models.TextField(_("Text"), blank=True),
+    )
+    images = GenericRelation(
+        "core.Image", related_query_name="content_blocks", verbose_name=_("Images")
     )
 
     def __str__(self):
