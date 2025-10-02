@@ -1,5 +1,4 @@
-from core.urls import router
-
+from rest_framework.routers import DefaultRouter
 from .views import (
     SkillViewSet,
     CategoryViewSet,
@@ -10,8 +9,9 @@ from .views import (
 
 app_name = "portfolio"
 
-router.register(r"skills", SkillViewSet)
-router.register(r"categories", CategoryViewSet)
-router.register(r"projects", ProjectViewSet)
-router.register(r"experiences", ExperienceViewSet)
-router.register(r"educations", EducationViewSet)
+portfolio_router = DefaultRouter()
+portfolio_router.register(r"skills", SkillViewSet)
+portfolio_router.register(r"categories", CategoryViewSet)
+portfolio_router.register(r"projects", ProjectViewSet)
+portfolio_router.register(r"experiences", ExperienceViewSet)
+portfolio_router.register(r"educations", EducationViewSet)
