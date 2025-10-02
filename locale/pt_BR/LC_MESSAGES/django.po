@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-09-28 13:44-0300\n"
+"POT-Creation-Date: 2025-10-01 22:46-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,37 +18,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: content/admin.py:19
+#: content/admin.py:21
 msgid "Mark as active"
 msgstr "Marcar como ativo"
 
-#: content/admin.py:28
+#: content/admin.py:30
 msgid "Mark as inactive"
 msgstr "Marcar como inativo"
 
-#: content/admin.py:60 content/admin.py:107 content/admin.py:142
-#: content/admin.py:195
+#: content/admin.py:62 content/admin.py:109 content/admin.py:145
+#: content/admin.py:198
 msgid "Global"
 msgstr "Global"
 
-#: content/admin.py:62 content/admin.py:108 content/admin.py:153
-#: content/admin.py:196
+#: content/admin.py:64 content/admin.py:110 content/admin.py:156
+#: content/admin.py:199 core/admin.py:54
 msgid "Translations"
 msgstr "Traduções"
 
-#: content/admin.py:109 content/admin.py:197 core/admin.py:54
+#: content/admin.py:111 content/admin.py:200 core/admin.py:65
 msgid "Metadata"
 msgstr "Metadados"
 
-#: content/admin.py:226
+#: content/admin.py:229
 msgid "Mark as new"
 msgstr "Marcar como novo"
 
-#: content/admin.py:230
+#: content/admin.py:233
 msgid "Mark as read"
 msgstr "Marcar como lido"
 
-#: content/admin.py:234
+#: content/admin.py:237
 msgid "Mark as archived"
 msgstr "Marcar como arquivado"
 
@@ -149,7 +149,7 @@ msgstr "Chave-Menu"
 msgid "Label"
 msgstr "Rótulo"
 
-#: content/models.py:88 core/admin.py:80 core/models.py:92
+#: content/models.py:88 core/admin.py:91 core/models.py:92
 #: portfolio/models.py:66
 msgid "Title"
 msgstr "Título"
@@ -235,15 +235,15 @@ msgstr "Mensagens"
 msgid "Image Files"
 msgstr "Arquivos de Imagem"
 
-#: core/admin.py:68
+#: core/admin.py:79
 msgid "Related Object"
 msgstr "Objeto Relacionado"
 
-#: core/admin.py:72
+#: core/admin.py:83
 msgid "Timestamps"
 msgstr "Timestamps"
 
-#: core/admin.py:95
+#: core/admin.py:106
 msgid "Preview"
 msgstr "Prévia"
 
@@ -412,7 +412,11 @@ msgstr "Bem vindo ao Pholium"
 msgid "Home"
 msgstr "Início"
 
-#: pholium/jazzmin.py:39
+#: pholium/jazzmin.py:37
+msgid "API"
+msgstr "API"
+
+#: pholium/jazzmin.py:44
 msgid "Source Code"
 msgstr "Código-Fonte"
 

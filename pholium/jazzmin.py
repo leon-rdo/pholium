@@ -34,16 +34,17 @@ JAZZMIN_SETTINGS = {
     "topmenu_links": [
         # Url that gets reversed (Permissions can be added)
         {"name": _("Home"), "url": "admin:index", "permissions": ["auth.view_user"]},
+        {"name": _("API"), "url": "core:api-root", "permissions": []},
+        # model admin to link to (Permissions checked against model)
+        {"model": "content.SiteSetting", "permissions": ["content.view_sitesetting"]},
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "content"},
         # external url that opens in a new window (Permissions can be added)
         {
             "name": _("Source Code"),
             "url": "https://github.com/leon-rdo/pholium",
             "new_window": False,
         },
-        # App with dropdown menu to all its models pages (Permissions checked against models)
-        {"app": "content"},
-        # model admin to link to (Permissions checked against model)
-        {"model": "content.SiteSetting"},
     ],
     #############
     # User Menu #
