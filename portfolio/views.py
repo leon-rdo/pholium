@@ -1,5 +1,7 @@
 from rest_framework import viewsets
 
+from core.utils.filters import AutoFilterTranslationMixin
+
 from .models import (
     Skill,
     Category,
@@ -16,26 +18,26 @@ from .serializers import (
 )
 
 
-class SkillViewSet(viewsets.ModelViewSet):
+class SkillViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = Skill.objects.all().prefetch_related("translations")
     serializer_class = SkillSerializer
 
 
-class CategoryViewSet(viewsets.ModelViewSet):
+class CategoryViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = Category.objects.all().prefetch_related("translations")
     serializer_class = CategorySerializer
 
 
-class ProjectViewSet(viewsets.ModelViewSet):
+class ProjectViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = Project.objects.all().prefetch_related("translations", "parent")
     serializer_class = ProjectSerializer
 
 
-class ExperienceViewSet(viewsets.ModelViewSet):
+class ExperienceViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = Experience.objects.all().prefetch_related("translations")
     serializer_class = ExperienceSerializer
 
 
-class EducationViewSet(viewsets.ModelViewSet):
+class EducationViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = Education.objects.all().prefetch_related("translations")
     serializer_class = EducationSerializer

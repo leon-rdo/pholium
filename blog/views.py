@@ -1,9 +1,10 @@
 from django.utils import timezone
-from django.db.models import Count, Q
-from rest_framework import viewsets, status, filters
+from django.db.models import Count
+from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated
+
+from core.utils.filters import AutoFilterMixin, AutoFilterTranslationMixin
 
 from .models import (
     Category,
@@ -27,7 +28,7 @@ from .serializers import (
 # ==========================
 # Category ViewSet
 # ==========================
-class CategoryViewSet(viewsets.ModelViewSet):
+class CategoryViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = Category.objects.all().prefetch_related("translations")
     serializer_class = CategorySerializer
 
@@ -41,8 +42,8 @@ class CategoryViewSet(viewsets.ModelViewSet):
 # ==========================
 # Series ViewSet
 # ==========================
-class SeriesViewSet(viewsets.ModelViewSet):
-    queryset = Series.objects.all()
+class SeriesViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
+    queryset = Series.objects.all().prefetch_related("translations")
     serializer_class = SeriesSerializer
 
     def get_queryset(self):
@@ -55,7 +56,7 @@ class SeriesViewSet(viewsets.ModelViewSet):
 # ==========================
 # Post ViewSet
 # ==========================
-class PostViewSet(viewsets.ModelViewSet):
+class PostViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = Post.objects.all().prefetch_related("translations")
     serializer_class = PostSerializer
 
@@ -143,7 +144,7 @@ class PostViewSet(viewsets.ModelViewSet):
 # ==========================
 # PostTag ViewSet
 # ==========================
-class PostTagViewSet(viewsets.ModelViewSet):
+class PostTagViewSet(AutoFilterMixin, viewsets.ModelViewSet):
     queryset = PostTag.objects.all()
     serializer_class = PostTagSerializer
 
@@ -151,7 +152,7 @@ class PostTagViewSet(viewsets.ModelViewSet):
 # ==========================
 # Comment ViewSet
 # ==========================
-class CommentViewSet(viewsets.ModelViewSet):
+class CommentViewSet(AutoFilterMixin, viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
 
@@ -217,7 +218,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 # ==========================
 # PostReaction ViewSet
 # ==========================
-class PostReactionViewSet(viewsets.ModelViewSet):
+class PostReactionViewSet(AutoFilterMixin, viewsets.ModelViewSet):
     queryset = PostReaction.objects.all()
     serializer_class = PostReactionSerializer
 

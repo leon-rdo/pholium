@@ -1,5 +1,7 @@
 from rest_framework import viewsets
 
+from core.utils.filters import AutoFilterMixin, AutoFilterTranslationMixin
+
 from .models import (
     SiteSetting,
     ContentBlock,
@@ -16,26 +18,26 @@ from .serializers import (
 )
 
 
-class SiteSettingViewSet(viewsets.ModelViewSet):
+class SiteSettingViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = SiteSetting.objects.all().prefetch_related("translations")
     serializer_class = SiteSettingSerializer
 
 
-class ContentBlockViewSet(viewsets.ModelViewSet):
+class ContentBlockViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = ContentBlock.objects.all().prefetch_related("translations")
     serializer_class = ContentBlockSerializer
 
 
-class NavigationItemViewSet(viewsets.ModelViewSet):
+class NavigationItemViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = NavigationItem.objects.all().prefetch_related("translations", "parent")
     serializer_class = NavigationItemSerializer
 
 
-class TestimonialViewSet(viewsets.ModelViewSet):
+class TestimonialViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
     queryset = Testimonial.objects.all().prefetch_related("translations")
     serializer_class = TestimonialSerializer
 
 
-class ContactMessageViewSet(viewsets.ModelViewSet):
+class ContactMessageViewSet(AutoFilterMixin, viewsets.ModelViewSet):
     queryset = ContactMessage.objects.all()
     serializer_class = ContactMessageSerializer
