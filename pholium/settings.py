@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "content",
     "core",
     "portfolio",
+    "blog",
 ]
 
 MIDDLEWARE = [
