@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-03 00:10-0300\n"
+"POT-Creation-Date: 2025-10-04 15:18-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,318 +17,338 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: blog/admin.py:42
+#: blog/admin.py:32
 msgid "Has parent"
 msgstr "Has Parent"
 
-#: blog/admin.py:47
+#: blog/admin.py:37
 msgid "Yes"
 msgstr "Yes"
 
-#: blog/admin.py:48
+#: blog/admin.py:38
 msgid "No"
 msgstr "No"
 
-#: blog/admin.py:60 blog/admin.py:65
+#: blog/admin.py:50 blog/admin.py:55
 msgid "Approved"
 msgstr "Approved"
 
-#: blog/admin.py:66
+#: blog/admin.py:56
 msgid "Pending/Rejected"
 msgstr "Pending/Rejected"
 
-#: blog/admin.py:97
+#: blog/admin.py:87
 msgid "Basic"
 msgstr "Basic"
 
-#: blog/admin.py:99 blog/admin.py:143 blog/admin.py:238 content/admin.py:64
+#: blog/admin.py:89 blog/admin.py:133 blog/admin.py:228 content/admin.py:64
 #: content/admin.py:110 content/admin.py:156 content/admin.py:199
 #: core/admin.py:54
 msgid "Translations"
 msgstr "Translations"
 
-#: blog/admin.py:115 blog/models.py:55 content/models.py:128 core/models.py:20
+#: blog/admin.py:105 blog/models.py:56 content/models.py:128 core/models.py:20
 #: portfolio/models.py:13 portfolio/models.py:40
 msgid "Name"
 msgstr "Name"
 
-#: blog/admin.py:119 blog/admin.py:163 content/models.py:52 core/models.py:124
+#: blog/admin.py:109 blog/admin.py:153 content/models.py:52 core/models.py:124
 #: portfolio/models.py:105 portfolio/models.py:133 portfolio/models.py:155
 msgid "Images"
 msgstr "Images"
 
-#: blog/admin.py:141 blog/models.py:208 content/models.py:133
+#: blog/admin.py:131 blog/models.py:215 content/models.py:133
 #: portfolio/models.py:80
 msgid "Status"
 msgstr "Status"
 
-#: blog/admin.py:159 blog/admin.py:264 blog/models.py:107 blog/models.py:225
+#: blog/admin.py:149 blog/admin.py:254 blog/models.py:111 blog/models.py:232
 #: content/models.py:88 core/admin.py:91 core/models.py:92
 #: portfolio/models.py:66
 msgid "Title"
 msgstr "Title"
 
-#: blog/admin.py:221
+#: blog/admin.py:211
 msgid "Publishing"
 msgstr "Publishing"
 
-#: blog/admin.py:232
+#: blog/admin.py:222
 msgid "Relations"
 msgstr "Relations"
 
-#: blog/admin.py:234
+#: blog/admin.py:224
 msgid "Metrics (auto)"
 msgstr "Metrics (auto)"
 
-#: blog/admin.py:268 blog/models.py:353
+#: blog/admin.py:258 blog/models.py:365
 msgid "Comments"
 msgstr "Comments"
 
-#: blog/admin.py:272
+#: blog/admin.py:262
 msgid "Reactions"
 msgstr "Reactions"
 
-#: blog/admin.py:276
+#: blog/admin.py:266
 msgid "Mark selected posts as published (now)"
 msgstr "Mark selected posts as published (now)"
 
-#: blog/admin.py:283
+#: blog/admin.py:273
 #, python-format
 msgid "%d posts published."
 msgstr "%d posts published."
 
-#: blog/admin.py:285
+#: blog/admin.py:275
 msgid "Mark selected posts as draft"
 msgstr "Mark selected posts as draft"
 
-#: blog/admin.py:288
+#: blog/admin.py:278
 #, python-format
 msgid "%d posts set to draft."
 msgstr "%d posts set to draft."
 
-#: blog/admin.py:337 blog/models.py:185 portfolio/models.py:97
+#: blog/admin.py:327 blog/models.py:192 portfolio/models.py:97
 msgid "Author"
 msgstr "Author"
 
-#: blog/admin.py:341 blog/models.py:346
+#: blog/admin.py:331 blog/models.py:358
 msgid "Content"
 msgstr "Content"
 
-#: blog/admin.py:347
+#: blog/admin.py:337
 msgid "Approve selected"
 msgstr "Approve selected"
 
-#: blog/admin.py:350
+#: blog/admin.py:340
 #, python-format
 msgid "%d comments approved."
 msgstr "%d comments approved."
 
-#: blog/admin.py:352
+#: blog/admin.py:342
 msgid "Reject (unapprove) selected"
 msgstr "Reject (unapprove) selected"
 
-#: blog/admin.py:355
+#: blog/admin.py:345
 #, python-format
 msgid "%d comments unapproved."
 msgstr "%d comments unapproved."
 
-#: blog/models.py:17 portfolio/models.py:60
+#: blog/models.py:18 portfolio/models.py:60
 msgid "Draft"
 msgstr "Draft"
 
-#: blog/models.py:18
+#: blog/models.py:19
 msgid "Scheduled"
 msgstr "Scheduled"
 
-#: blog/models.py:19 portfolio/models.py:61
+#: blog/models.py:20 portfolio/models.py:61
 msgid "Published"
 msgstr "Published"
 
-#: blog/models.py:20 content/models.py:138 portfolio/models.py:62
+#: blog/models.py:21 content/models.py:138 portfolio/models.py:62
 msgid "Archived"
 msgstr "Archived"
 
-#: blog/models.py:24
+#: blog/models.py:25
 msgid "Public"
 msgstr "Public"
 
-#: blog/models.py:25
+#: blog/models.py:26
 msgid "Unlisted"
 msgstr "Unlisted"
 
-#: blog/models.py:26
+#: blog/models.py:27
 msgid "Private"
 msgstr "Private"
 
-#: blog/models.py:30
+#: blog/models.py:31
 msgid "Like"
 msgstr "Like"
 
-#: blog/models.py:31
+#: blog/models.py:32
 msgid "Love"
 msgstr "Love"
 
-#: blog/models.py:32
+#: blog/models.py:33
 msgid "Clap"
 msgstr "Clap"
 
-#: blog/models.py:33
+#: blog/models.py:34
 msgid "Fire"
 msgstr "Fire"
 
-#: blog/models.py:34
+#: blog/models.py:35
 msgid "Wow"
 msgstr "Wow"
 
-#: blog/models.py:47 blog/models.py:330 content/models.py:76
+#: blog/models.py:48 blog/models.py:342 content/models.py:76
 msgid "Parent"
 msgstr "Parent"
 
-#: blog/models.py:56 blog/models.py:108 blog/models.py:226 core/models.py:21
+#: blog/models.py:57 blog/models.py:112 blog/models.py:233 core/models.py:21
 #: portfolio/models.py:14 portfolio/models.py:41 portfolio/models.py:67
 msgid "Slug"
 msgstr "Slug"
 
-#: blog/models.py:57 blog/models.py:109 portfolio/models.py:69
+#: blog/models.py:58 blog/models.py:113 portfolio/models.py:69
 #: portfolio/models.py:127 portfolio/models.py:150
 msgid "Description"
 msgstr "Description"
 
-#: blog/models.py:58 blog/models.py:110 blog/models.py:229
+#: blog/models.py:59 blog/models.py:114 blog/models.py:236
 msgid "SEO Title"
 msgstr "SEO Title"
 
-#: blog/models.py:60 blog/models.py:112 blog/models.py:231
+#: blog/models.py:61 blog/models.py:116 blog/models.py:238
 msgid "Meta Description"
 msgstr "Meta Description"
 
-#: blog/models.py:64 blog/models.py:115 content/models.py:81
+#: blog/models.py:68 blog/models.py:122 content/models.py:81
 msgid "Is active?"
 msgstr "Is active?"
 
-#: blog/models.py:65 blog/models.py:300 content/models.py:79
+#: blog/models.py:69 blog/models.py:310 content/models.py:79
 #: content/models.py:107
 msgid "Order"
 msgstr "Order"
 
-#: blog/models.py:75 blog/models.py:192 portfolio/models.py:45
+#: blog/models.py:79 blog/models.py:199 portfolio/models.py:45
 #: portfolio/models.py:84
 msgid "Category"
 msgstr "Category"
 
-#: blog/models.py:76 portfolio/models.py:46
+#: blog/models.py:80 portfolio/models.py:46
 msgid "Categories"
 msgstr "Categories"
 
-#: blog/models.py:125 blog/models.py:126 blog/models.py:200
+#: blog/models.py:132 blog/models.py:133 blog/models.py:207
 msgid "Series"
 msgstr "Series"
 
-#: blog/models.py:211
+#: blog/models.py:218
 msgid "Visibility"
 msgstr "Visibility"
 
-#: blog/models.py:216
+#: blog/models.py:223
 msgid "Publish at"
 msgstr "Publish at"
 
-#: blog/models.py:217
+#: blog/models.py:224
 msgid "Allow comments?"
 msgstr "Allow comments?"
 
-#: blog/models.py:218
+#: blog/models.py:225
 msgid "Pin to top?"
 msgstr "Pin to top?"
 
-#: blog/models.py:220
+#: blog/models.py:227
 msgid "Reading time (min)"
 msgstr "Reading time (min)"
 
-#: blog/models.py:220
+#: blog/models.py:227
 msgid "Estimated in minutes"
 msgstr "Estimated in minutes"
 
-#: blog/models.py:222
+#: blog/models.py:229
 msgid "Views"
 msgstr "Views"
 
-#: blog/models.py:227
+#: blog/models.py:234
 msgid "Excerpt"
 msgstr "Excerpt"
 
-#: blog/models.py:228
+#: blog/models.py:235
 msgid "Body"
 msgstr "Body"
 
-#: blog/models.py:233
+#: blog/models.py:240
 msgid "Canonical URL"
 msgstr "Canonical URL"
 
-#: blog/models.py:250 blog/models.py:322 blog/models.py:369
+#: blog/models.py:260 blog/models.py:334 blog/models.py:381
 msgid "Post"
 msgstr "Post"
 
-#: blog/models.py:251
+#: blog/models.py:261
 msgid "Posts"
 msgstr "Posts"
 
-#: blog/models.py:303
+#: blog/models.py:316
 msgid "Post Tag"
 msgstr "Post Tag"
 
-#: blog/models.py:304
+#: blog/models.py:317
 msgid "Post Tags"
 msgstr "Post Tags"
 
-#: blog/models.py:339 blog/models.py:375
+#: blog/models.py:351 blog/models.py:387
 msgid "User"
 msgstr "User"
 
-#: blog/models.py:342
+#: blog/models.py:354
 msgid "Guest name"
 msgstr "Guest name"
 
-#: blog/models.py:343
+#: blog/models.py:355
 msgid "Guest email"
 msgstr "Guest email"
 
-#: blog/models.py:344
+#: blog/models.py:356
 msgid "Guest website"
 msgstr "Guest website"
 
-#: blog/models.py:347
+#: blog/models.py:359
 msgid "Approved?"
 msgstr "Approved?"
 
-#: blog/models.py:348
+#: blog/models.py:360
 msgid "IP"
 msgstr "IP"
 
-#: blog/models.py:349
+#: blog/models.py:361
 msgid "User Agent"
 msgstr "User Agent"
 
-#: blog/models.py:352
+#: blog/models.py:364
 msgid "Comment"
 msgstr "Comment"
 
-#: blog/models.py:378
+#: blog/models.py:390
 msgid "Reaction"
 msgstr "Reaction"
 
-#: blog/models.py:383
+#: blog/models.py:395
 #, fuzzy
 #| msgid "Created At"
 msgid "Created at"
 msgstr "Created At"
 
-#: blog/models.py:386
+#: blog/models.py:403
 msgid "Post Reaction"
 msgstr "Post Reaction"
 
-#: blog/models.py:387
+#: blog/models.py:404
 msgid "Post Reactions"
 msgstr "Post Reactions"
+
+#: blog/serializers.py:119
+msgid "Invalid status."
+msgstr "Invalid status."
+
+#: blog/serializers.py:124
+msgid "Invalid visibility."
+msgstr "Invalid visibility."
+
+#: blog/serializers.py:179
+msgid "Either 'user' or 'guest_name' must be provided."
+msgstr "Either 'user' or 'guest_name' must be provided."
+
+#: blog/serializers.py:185
+msgid "Guest email is required for anonymous comments."
+msgstr "Guest email is required for anonymous comments."
+
+#: blog/serializers.py:208
+msgid "Invalid reaction type."
+msgstr "Invalid reaction type."
 
 #: content/admin.py:21
 msgid "Mark as active"
