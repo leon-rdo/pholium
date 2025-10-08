@@ -35,25 +35,6 @@ class Skill(TranslatableModel, TimeStamped):
         return self.safe_translation_getter("name", any_language=True) or ""
 
 
-class Category(TranslatableModel, TimeStamped):
-    translations = TranslatedFields(
-        name=models.CharField(_("Name"), max_length=80, unique=False),
-        slug=models.SlugField(_("Slug"), max_length=100, blank=True, db_index=True),
-    )
-
-    class Meta:
-        verbose_name = _("Category")
-        verbose_name_plural = _("Categories")
-
-    def save(self, *args, **kwargs):
-        if not self.slug and (self.name or ""):
-            self.slug = slugify(self.name)
-        return super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.safe_translation_getter("name", any_language=True) or ""
-
-
 class Project(TranslatableModel, TimeStamped):
     DRAFT, PUBLISHED, ARCHIVED = "draft", "published", "archived"
     STATUS_CHOICES = [
@@ -78,13 +59,6 @@ class Project(TranslatableModel, TimeStamped):
     )
     status = models.CharField(
         _("Status"), max_length=12, choices=STATUS_CHOICES, default=DRAFT
-    )
-    category = models.ForeignKey(
-        "portfolio.Category",
-        verbose_name=_("Category"),
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
     )
     tags = models.ManyToManyField(
         "core.Tag", verbose_name=_("Tags"), blank=True, related_name="projects"

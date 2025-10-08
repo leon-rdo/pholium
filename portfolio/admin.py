@@ -2,7 +2,7 @@ from django.contrib import admin
 from parler.admin import TranslatableAdmin
 
 from core.admin import ImageInline
-from .models import Skill, Category, Project, Experience, Education
+from .models import Skill, Project, Experience, Education
 
 
 @admin.register(Skill)
@@ -15,29 +15,18 @@ class SkillAdmin(TranslatableAdmin):
         return {"slug": ("name",)}
 
 
-@admin.register(Category)
-class CategoryAdmin(TranslatableAdmin):
-    list_display = ("name", "slug", "created_at", "updated_at")
-    search_fields = ("translations__name", "translations__slug")
-    ordering = ("translations__name",)
-
-    def get_prepopulated_fields(self, request, obj=None):
-        return {"slug": ("name",)}
-
-
 @admin.register(Project)
 class ProjectAdmin(TranslatableAdmin):
     list_display = (
         "title",
         "status",
-        "category",
         "author",
         "featured",
         "sort_order",
         "created_at",
         "updated_at",
     )
-    list_filter = ("status", "category", "featured")
+    list_filter = ("status", "featured")
     search_fields = (
         "translations__title",
         "translations__slug",

@@ -3,7 +3,7 @@ from rest_framework import serializers
 
 from core.utils.translations import FlattenTranslatedFieldsMixin, TranslationsField
 
-from .models import Skill, Category, Project, Experience, Education
+from .models import Skill, Project, Experience, Education
 
 User = get_user_model()
 
@@ -22,24 +22,6 @@ class SkillSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer)
             "translations",
             "level",
             "icon",
-            "created_at",
-            "updated_at",
-        ]
-        read_only_fields = ["created_at", "updated_at"]
-
-
-class CategorySerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
-    translations = TranslationsField(
-        fields=["name", "slug"],
-        source="*",
-        required=False,
-    )
-
-    class Meta:
-        model = Category
-        fields = [
-            "id",
-            "translations",
             "created_at",
             "updated_at",
         ]
