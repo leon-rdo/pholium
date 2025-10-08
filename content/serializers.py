@@ -39,7 +39,7 @@ class ContentBlockSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSeri
         model = ContentBlock
         fields = [
             "id",
-            "page",
+            "page_name",
             "key",
             "kind",
             "translations",

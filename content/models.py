@@ -34,7 +34,7 @@ class SiteSetting(TranslatableModel):
 
 
 class ContentBlock(TranslatableModel, TimeStamped):
-    page = models.CharField(
+    page_name = models.CharField(
         _("Page"), max_length=80
     )  # ex.: "home", "projects", "about"
     key = models.CharField(_("Key"), max_length=80)  # ex.: "hero_title", "cta_text"
@@ -53,17 +53,17 @@ class ContentBlock(TranslatableModel, TimeStamped):
     )
 
     def __str__(self):
-        return f"{self.page} - {self.key}"
+        return f"{self.page_name} - {self.key}"
 
     class Meta:
         verbose_name = _("Content Block")
         verbose_name_plural = _("Content Blocks")
         constraints = [
             models.UniqueConstraint(
-                fields=["page", "key"], name="uq_contentblock_page_key"
+                fields=["page_name", "key"], name="uq_contentblock_page_key"
             )
         ]
-        indexes = [models.Index(fields=["page"])]
+        indexes = [models.Index(fields=["page_name"])]
 
 
 class NavigationItem(TranslatableModel, TimeStamped):

@@ -88,7 +88,7 @@ class SiteSettingAdmin(TranslatableAdmin):
 @admin.register(ContentBlock)
 class ContentBlockAdmin(TranslatableAdmin):
     """
-    Arbitrary content blocks identified by (page, key) with translatable text.
+    Arbitrary content blocks identified by (page_name, key) with translatable text.
     Suitable for sections like hero, footer notices, etc.
     """
 
@@ -98,15 +98,15 @@ class ContentBlockAdmin(TranslatableAdmin):
     # If your TimeStamped mixin provides these fields, date_hierarchy will work:
     date_hierarchy = "created_at"
 
-    list_display = ["page", "key", "kind", "created_at", "updated_at"]
-    list_filter = ["page", "kind"]
-    search_fields = ["page", "key", "translations__text"]
-    ordering = ["page", "key"]
+    list_display = ["page_name", "key", "kind", "created_at", "updated_at"]
+    list_filter = ["page_name", "kind"]
+    search_fields = ["page_name", "key", "translations__text"]
+    ordering = ["page_name", "key"]
 
     readonly_fields = ["created_at", "updated_at"]
 
     fieldsets = (
-        (_("Global"), {"fields": ("page", "key", "kind")}),
+        (_("Global"), {"fields": ("page_name", "key", "kind")}),
         (_("Translations"), {"fields": ("text",)}),
         (_("Metadata"), {"fields": ("created_at", "updated_at")}),
     )
