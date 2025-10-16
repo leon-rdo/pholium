@@ -482,7 +482,7 @@ msgstr "Foto"
 
 #: content/models.py:110
 msgid "Author's Role"
-msgstr "Nome do Autor"
+msgstr "Cargo do Autor"
 
 #: content/models.py:111 portfolio/models.py:124
 msgid "Company"

@@ -22,7 +22,7 @@ class SkillViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
 
 
 class ProjectViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
-    queryset = Project.objects.all().prefetch_related("translations", "parent")
+    queryset = Project.objects.all().prefetch_related("translations")
     serializer_class = ProjectSerializer
 
 

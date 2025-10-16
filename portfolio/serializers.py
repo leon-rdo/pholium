@@ -46,7 +46,6 @@ class ProjectSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerialize
             "repo_url",
             "cover",
             "status",
-            "category",
             "tags",
             "skills",
             "author",

@@ -114,7 +114,7 @@ class Testimonial(TranslatableModel, TimeStamped):
 
     def __str__(self):
         return (
-            self.safe_translation_getter("author_name", any_language=True)
+            self.author_name
             or f"Testimonial {self.pk}"
         )
 
