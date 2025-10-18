@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "parler",
     "django_filters",
+    "rest_flex_fields",
     "content",
     "core",
     "portfolio",

@@ -1,6 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 
+from core.utils.auto_flex_fields_serializer import AutoFlexFieldsSerializer
 from core.utils.translations import TranslationsField, FlattenTranslatedFieldsMixin
 
 from .models import (
@@ -19,7 +20,7 @@ from .models import (
 # ==========================
 # Category Serializer
 # ==========================
-class CategorySerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class CategorySerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=[
             "name",
@@ -47,7 +48,7 @@ class CategorySerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializ
 # ==========================
 # Series Serializer
 # ==========================
-class SeriesSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class SeriesSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=[
             "title",
@@ -73,7 +74,7 @@ class SeriesSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer
 # ==========================
 # Post Serializer
 # ==========================
-class PostSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class PostSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=[
             "title",
@@ -128,7 +129,7 @@ class PostSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
 # ==========================
 # PostTag Serializer
 # ==========================
-class PostTagSerializer(serializers.ModelSerializer):
+class PostTagSerializer(AutoFlexFieldsSerializer):
     class Meta:
         model = PostTag
         fields = [
@@ -143,7 +144,7 @@ class PostTagSerializer(serializers.ModelSerializer):
 # ==========================
 # Comment Serializer
 # ==========================
-class CommentSerializer(serializers.ModelSerializer):
+class CommentSerializer(AutoFlexFieldsSerializer):
     class Meta:
         model = Comment
         fields = [
@@ -191,7 +192,7 @@ class CommentSerializer(serializers.ModelSerializer):
 # ==========================
 # PostReaction Serializer
 # ==========================
-class PostReactionSerializer(serializers.ModelSerializer):
+class PostReactionSerializer(AutoFlexFieldsSerializer):
     class Meta:
         model = PostReaction
         fields = [

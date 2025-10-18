@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
-from rest_framework import serializers
 
+from core.utils.auto_flex_fields_serializer import AutoFlexFieldsSerializer
 from core.utils.translations import FlattenTranslatedFieldsMixin, TranslationsField
 
 from .models import Skill, Project, Experience, Education
@@ -8,7 +8,7 @@ from .models import Skill, Project, Experience, Education
 User = get_user_model()
 
 
-class SkillSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class SkillSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=["name", "slug"],
         source="*",
@@ -28,7 +28,7 @@ class SkillSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer)
         read_only_fields = ["created_at", "updated_at"]
 
 
-class ProjectSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class ProjectSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=["title", "slug", "summary", "description"],
         source="*",
@@ -57,7 +57,7 @@ class ProjectSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerialize
         read_only_fields = ["created_at", "updated_at"]
 
 
-class ExperienceSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class ExperienceSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=["company", "role", "location", "description"],
         source="*",
@@ -78,7 +78,7 @@ class ExperienceSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerial
         read_only_fields = ["created_at", "updated_at"]
 
 
-class EducationSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class EducationSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=["institution", "degree", "description"],
         source="*",

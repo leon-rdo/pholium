@@ -1,10 +1,9 @@
-from rest_framework import serializers
-
+from core.utils.auto_flex_fields_serializer import AutoFlexFieldsSerializer
 from core.utils.translations import FlattenTranslatedFieldsMixin, TranslationsField
 from .models import Image
 
 
-class ImageSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class ImageSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=["title", "alt_text", "caption", "credits"],
         source="*",

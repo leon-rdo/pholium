@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from core.utils.auto_flex_fields_serializer import AutoFlexFieldsSerializer
 from core.utils.translations import FlattenTranslatedFieldsMixin, TranslationsField
 
 from .models import (
@@ -11,7 +12,7 @@ from .models import (
 )
 
 
-class SiteSettingSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class SiteSettingSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=["site_name", "tagline", "bio", "default_title", "default_description"],
         source="*",
@@ -28,7 +29,7 @@ class SiteSettingSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSeria
         ]
 
 
-class ContentBlockSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class ContentBlockSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=["text"],
         source="*",
@@ -50,7 +51,7 @@ class ContentBlockSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSeri
 
 
 class NavigationItemSerializer(
-    FlattenTranslatedFieldsMixin, serializers.ModelSerializer
+    FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer
 ):
     parent = serializers.PrimaryKeyRelatedField(
         queryset=NavigationItem.objects.all(), allow_null=True, required=False
@@ -76,7 +77,7 @@ class NavigationItemSerializer(
         read_only_fields = ["created_at", "updated_at"]
 
 
-class TestimonialSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSerializer):
+class TestimonialSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     translations = TranslationsField(
         fields=["author_role", "company", "text"],
         source="*",
@@ -98,7 +99,7 @@ class TestimonialSerializer(FlattenTranslatedFieldsMixin, serializers.ModelSeria
 
 
 class ContactMessageSerializer(
-    FlattenTranslatedFieldsMixin, serializers.ModelSerializer
+    FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer
 ):
     class Meta:
         model = ContactMessage
