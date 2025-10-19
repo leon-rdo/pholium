@@ -1,6 +1,10 @@
 from rest_framework import viewsets
 
 from core.utils.filters import AutoFilterMixin, AutoFilterTranslationMixin
+from rest_framework.permissions import (
+    AllowAny,
+    DjangoModelPermissions,
+)
 
 from .models import (
     SiteSetting,
@@ -41,3 +45,8 @@ class TestimonialViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
 class ContactMessageViewSet(AutoFilterMixin, viewsets.ModelViewSet):
     queryset = ContactMessage.objects.all()
     serializer_class = ContactMessageSerializer
+
+    def get_permissions(self):
+        if self.action == "create":
+            return [AllowAny()]
+        return [DjangoModelPermissions()]
