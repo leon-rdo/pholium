@@ -77,63 +77,6 @@ class AutoFilterMixin:
             self.filterset_class = self._create_filterset_class(queryset.model)
         return queryset
 
-    def filter_queryset(self, queryset):
-        """Ensure translated field filters apply on the same translation row."""
-        model = queryset.model
-        translation_model = self._get_translation_model(model)
-        if not translation_model:
-            return super().filter_queryset(queryset)
-
-        all_languages = str(
-            self.request.query_params.get(self.all_languages_param, "")
-        ).lower() in {"true", "1", "yes"}
-
-        lang_overridden = any(
-            k.startswith("translations__language_code")
-            for k in self.request.query_params.keys()
-        )
-
-        translation_lookups = {}
-        has_translation_filter = False
-        for key, value in self.request.query_params.items():
-            if not key.startswith("translations__") or key.startswith(
-                "translations__language_code"
-            ):
-                continue
-            has_translation_filter = True
-            lookup = key.split("translations__", 1)[1]
-            if lookup.endswith("__in"):
-                value = [v for v in value.split(",") if v]
-            translation_lookups[lookup] = value
-
-        apply_exists = (
-            has_translation_filter and not all_languages and not lang_overridden
-        )
-        if apply_exists:
-            fk_to_parent = None
-            for f in translation_model._meta.get_fields():
-                if (
-                    getattr(f, "is_relation", False)
-                    and getattr(f, "related_model", None) is model
-                    and getattr(f, "many_to_one", False)
-                ):
-                    fk_to_parent = f.name
-                    break
-            if fk_to_parent:
-                current_language = get_language()
-                subfilters = {
-                    fk_to_parent: OuterRef("pk"),
-                    "language_code": current_language,
-                }
-                subfilters.update(translation_lookups)
-                sub_qs = translation_model.objects.filter(**subfilters).values("pk")
-                queryset = queryset.filter(Exists(sub_qs))
-
-        queryset = super().filter_queryset(queryset)
-        if apply_exists and has_translation_filter:
-            queryset = queryset.distinct()
-        return queryset
-
 
 class AutoFilterTranslationMixin(AutoFilterMixin):
     """Extends AutoFilterMixin to support translated fields."""
@@ -217,3 +160,60 @@ class AutoFilterTranslationMixin(AutoFilterMixin):
         return type(
             f"{model.__name__}AutoTranslationFilterSet", (FilterSet,), {"Meta": meta}
         )
+
+    def filter_queryset(self, queryset):
+        """Ensure translated field filters apply on the same translation row."""
+        model = queryset.model
+        translation_model = self._get_translation_model(model)
+        if not translation_model:
+            return super().filter_queryset(queryset)
+
+        all_languages = str(
+            self.request.query_params.get(self.all_languages_param, "")
+        ).lower() in {"true", "1", "yes"}
+
+        lang_overridden = any(
+            k.startswith("translations__language_code")
+            for k in self.request.query_params.keys()
+        )
+
+        translation_lookups = {}
+        has_translation_filter = False
+        for key, value in self.request.query_params.items():
+            if not key.startswith("translations__") or key.startswith(
+                "translations__language_code"
+            ):
+                continue
+            has_translation_filter = True
+            lookup = key.split("translations__", 1)[1]
+            if lookup.endswith("__in"):
+                value = [v for v in value.split(",") if v]
+            translation_lookups[lookup] = value
+
+        apply_exists = (
+            has_translation_filter and not all_languages and not lang_overridden
+        )
+        if apply_exists:
+            fk_to_parent = None
+            for f in translation_model._meta.get_fields():
+                if (
+                    getattr(f, "is_relation", False)
+                    and getattr(f, "related_model", None) is model
+                    and getattr(f, "many_to_one", False)
+                ):
+                    fk_to_parent = f.name
+                    break
+            if fk_to_parent:
+                current_language = get_language()
+                subfilters = {
+                    fk_to_parent: OuterRef("pk"),
+                    "language_code": current_language,
+                }
+                subfilters.update(translation_lookups)
+                sub_qs = translation_model.objects.filter(**subfilters).values("pk")
+                queryset = queryset.filter(Exists(sub_qs))
+
+        queryset = super().filter_queryset(queryset)
+        if apply_exists and has_translation_filter:
+            queryset = queryset.distinct()
+        return queryset
