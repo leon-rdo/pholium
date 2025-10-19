@@ -1,6 +1,24 @@
 from core.utils.auto_flex_fields_serializer import AutoFlexFieldsSerializer
 from core.utils.translations import FlattenTranslatedFieldsMixin, TranslationsField
-from .models import Image
+from .models import Image, Tag
+
+
+class TagSerializer(AutoFlexFieldsSerializer):
+    """
+    Serializer for Tag model
+    """
+
+    class Meta:
+        model = Tag
+        fields = [
+            "id",
+            "name",
+            "slug",
+            "language",
+            "created_at",
+            "updated_at",
+        ]
+        read_only_fields = ["id", "created_at", "updated_at"]
 
 
 class ImageSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
