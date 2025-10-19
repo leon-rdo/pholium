@@ -50,9 +50,7 @@ class ContentBlockSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSeriali
         read_only_fields = ["created_at", "updated_at"]
 
 
-class NavigationItemSerializer(
-    FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer
-):
+class NavigationItemSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
     parent = serializers.PrimaryKeyRelatedField(
         queryset=NavigationItem.objects.all(), allow_null=True, required=False
     )
@@ -98,9 +96,7 @@ class TestimonialSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializ
         read_only_fields = ["created_at", "updated_at"]
 
 
-class ContactMessageSerializer(
-    FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer
-):
+class ContactMessageSerializer(AutoFlexFieldsSerializer):
     class Meta:
         model = ContactMessage
         fields = [
