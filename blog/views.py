@@ -4,6 +4,7 @@ from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
+from core.permissions import CreateOrListReadOnly
 from core.utils.filters import AutoFilterMixin, AutoFilterTranslationMixin
 
 from .models import (
@@ -155,6 +156,7 @@ class PostTagViewSet(AutoFilterMixin, viewsets.ModelViewSet):
 class CommentViewSet(AutoFilterMixin, viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
+    permission_classes = [CreateOrListReadOnly]
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -171,7 +173,7 @@ class CommentViewSet(AutoFilterMixin, viewsets.ModelViewSet):
         ip_address = self.get_client_ip(request)
         user_agent = request.META.get("HTTP_USER_AGENT", "")[:300]
 
-        serializer.save(ip_address=ip_address, user_agent=user_agent)
+        serializer.save(ip_address=ip_address, user_agent=user_agent, is_approved=False)
 
     def get_client_ip(self, request):
         """Get client IP from request"""
