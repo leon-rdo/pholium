@@ -1,8 +1,10 @@
+from django.contrib.auth import get_user_model
 from django.utils.translation import gettext_lazy as _
-from rest_framework import serializers
 
+from rest_framework import serializers
 from core.utils.auto_flex_fields_serializer import AutoFlexFieldsSerializer
 from core.utils.translations import TranslationsField, FlattenTranslatedFieldsMixin
+from portfolio.serializers import User
 
 from .models import (
     Category,
@@ -72,9 +74,20 @@ class SeriesSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
 
 
 # ==========================
+# Author Serializer
+# ==========================
+class AuthorSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = get_user_model()
+        fields = ["id", "first_name", "last_name"]
+
+
+# ==========================
 # Post Serializer
 # ==========================
 class PostSerializer(FlattenTranslatedFieldsMixin, AutoFlexFieldsSerializer):
+    author = AuthorSerializer(read_only=True)
     translations = TranslationsField(
         fields=[
             "title",
