@@ -201,7 +201,8 @@ LOCALE_PATHS = [BASE_DIR / "locale"]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = os.getenv("STATIC_URL", "/static/")
+STATIC_ROOT = os.getenv("STATIC_ROOT", str(BASE_DIR / "staticfiles"))
 
 # Media files
 MEDIA_URL = os.getenv("MEDIA_URL", "/media/")
