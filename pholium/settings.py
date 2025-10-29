@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     "parler",
     "django_filters",
     "rest_flex_fields",
+    "whitenoise",
     "content",
     "core",
     "portfolio",
@@ -66,6 +67,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.locale.LocaleMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -203,6 +205,12 @@ LOCALE_PATHS = [BASE_DIR / "locale"]
 
 STATIC_URL = os.getenv("STATIC_URL", "/static/")
 STATIC_ROOT = os.getenv("STATIC_ROOT", str(BASE_DIR / "staticfiles"))
+
+if not DEBUG:
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    WHITENOISE_USE_FINDERS = True
+    WHITENOISE_MANIFEST_STRICT = False
+    WHITENOISE_ALLOW_ALL_ORIGINS = True
 
 # Media files
 MEDIA_URL = os.getenv("MEDIA_URL", "/media/")
