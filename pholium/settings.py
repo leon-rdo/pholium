@@ -99,9 +99,16 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 20,
 }
 
-
+# URL Configuration
 ROOT_URLCONF = "pholium.urls"
 
+# Security settings for HTTPS
+if not DEBUG:
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+    USE_X_FORWARDED_HOST = True
+    SECURE_SSL_REDIRECT = True
+
+# Templates configuration
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
