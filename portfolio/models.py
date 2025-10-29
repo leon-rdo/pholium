@@ -110,6 +110,7 @@ class Experience(TranslatableModel, TimeStamped):
     class Meta:
         verbose_name = _("Experience")
         verbose_name_plural = _("Experiences")
+        ordering = ["-start_date", "-end_date"]
 
     def __str__(self):
         company = self.safe_translation_getter("company", any_language=True) or ""
@@ -132,6 +133,7 @@ class Education(TranslatableModel, TimeStamped):
     class Meta:
         verbose_name = _("Education")
         verbose_name_plural = _("Education")
+        ordering = ["-start_date", "-end_date"]
 
     def __str__(self):
         inst = self.safe_translation_getter("institution", any_language=True) or ""
