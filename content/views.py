@@ -1,3 +1,5 @@
+import logging
+
 from django.core.mail import EmailMessage
 from django.contrib.auth import get_user_model
 from django.template.loader import render_to_string
@@ -8,9 +10,6 @@ from core.permissions import DjangoModelPermissionsOrAnonCreate
 from core.utils.filters import AutoFilterMixin, AutoFilterTranslationMixin
 
 from pholium.settings import EMAIL_HOST, DEFAULT_FROM_EMAIL
-
-
-User = get_user_model()
 
 from .models import (
     SiteSetting,
@@ -26,6 +25,9 @@ from .serializers import (
     TestimonialSerializer,
     ContactMessageSerializer,
 )
+
+User = get_user_model()
+logger = logging.getLogger(__name__)
 
 
 class SiteSettingViewSet(AutoFilterTranslationMixin, viewsets.ModelViewSet):
@@ -54,18 +56,23 @@ class ContactMessageViewSet(AutoFilterMixin, viewsets.ModelViewSet):
     permission_classes = [DjangoModelPermissionsOrAnonCreate]
 
     def perform_create(self, serializer):
-        """Save the message and send e-mail to superadmins"""
         instance = serializer.save()
+        logger.info(
+            f"Contact message created - ID: {instance.pk}, Email: {instance.email}, Subject: {instance.subject}"
+        )
 
         if EMAIL_HOST:
             try:
                 self._send_notification_email(instance)
+                logger.info(
+                    f"Contact message notification email sent successfully - Message ID: {instance.pk}"
+                )
             except Exception as e:
-                pass
+                logger.error(
+                    f"Failed to send contact message notification email - Message ID: {instance.pk}, Error: {str(e)}"
+                )
 
     def _send_notification_email(self, message):
-        """Send HTML e-mail notification to all superusers"""
-
         superuser_emails = list(
             User.objects.filter(is_superuser=True, is_active=True, email__isnull=False)
             .exclude(email="")
@@ -73,6 +80,9 @@ class ContactMessageViewSet(AutoFilterMixin, viewsets.ModelViewSet):
         )
 
         if not superuser_emails:
+            logger.warning(
+                "No superuser emails found to send contact message notification"
+            )
             return
 
         context = {

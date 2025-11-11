@@ -220,6 +220,7 @@ PARLER_DEFAULT_LANGUAGE_CODE = "en-us"
 
 LOCALE_PATHS = [BASE_DIR / "locale"]
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
@@ -232,11 +233,124 @@ if not DEBUG:
     WHITENOISE_MANIFEST_STRICT = False
     WHITENOISE_ALLOW_ALL_ORIGINS = True
 
+
 # Media files
 MEDIA_URL = os.getenv("MEDIA_URL", "/media/")
 MEDIA_ROOT = BASE_DIR / "media"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+# Logging configuration
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {message}",
+            "style": "{",
+        },
+        "simple": {
+            "format": "{levelname} {message}",
+            "style": "{",
+        },
+    },
+    "filters": {
+        "require_debug_false": {
+            "()": "django.utils.log.RequireDebugFalse",
+        },
+    },
+    "handlers": {
+        "console": {
+            "level": "INFO",
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+        },
+        "file_general": {
+            "level": "INFO",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": BASE_DIR / "logs" / "general.log",
+            "maxBytes": 1024 * 1024 * 25,
+            "backupCount": 5,
+            "formatter": "verbose",
+        },
+        "file_errors": {
+            "level": "ERROR",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": BASE_DIR / "logs" / "errors.log",
+            "maxBytes": 1024 * 1024 * 10,
+            "backupCount": 5,
+            "formatter": "verbose",
+        },
+        "file_security": {
+            "level": "WARNING",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": BASE_DIR / "logs" / "security.log",
+            "maxBytes": 1024 * 1024 * 10,
+            "backupCount": 5,
+            "formatter": "verbose",
+        },
+        "mail_admins": {
+            "level": "CRITICAL",
+            "class": "django.utils.log.AdminEmailHandler",
+            "filters": ["require_debug_false"],
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "file_general"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "django.request": {
+            "handlers": ["console", "file_errors", "mail_admins"],
+            "level": "ERROR",
+            "propagate": False,
+        },
+        "django.security": {
+            "handlers": ["console", "file_security", "mail_admins"],
+            "level": "WARNING",
+            "propagate": False,
+        },
+        "content": {
+            "handlers": ["console", "file_general", "file_errors", "mail_admins"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "core": {
+            "handlers": ["console", "file_general", "file_errors", "mail_admins"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "portfolio": {
+            "handlers": ["console", "file_general", "file_errors", "mail_admins"],
+            "level": "INFO",
+            "propagate": False,
+        },
+        "blog": {
+            "handlers": ["console", "file_general", "file_errors", "mail_admins"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+    "root": {
+        "handlers": ["console", "file_general"],
+        "level": "INFO",
+    },
+}
+
+ADMINS = [
+    (
+        os.getenv("ADMIN_NAME", "Admin"),
+        os.getenv("ADMIN_EMAIL", DEFAULT_FROM_EMAIL or ""),
+    ),
+]
+
+SERVER_EMAIL = os.getenv("SERVER_EMAIL", DEFAULT_FROM_EMAIL)
+
+os.makedirs(BASE_DIR / "logs", exist_ok=True)
