@@ -7,7 +7,7 @@ from rest_framework import viewsets
 from core.permissions import DjangoModelPermissionsOrAnonCreate
 from core.utils.filters import AutoFilterMixin, AutoFilterTranslationMixin
 
-from pholium.settings import DEFAULT_FROM_EMAIL
+from pholium.settings import EMAIL_HOST, DEFAULT_FROM_EMAIL
 
 
 User = get_user_model()
@@ -57,10 +57,11 @@ class ContactMessageViewSet(AutoFilterMixin, viewsets.ModelViewSet):
         """Save the message and send e-mail to superadmins"""
         instance = serializer.save()
 
-        try:
-            self._send_notification_email(instance)
-        except Exception as e:
-            pass
+        if EMAIL_HOST:
+            try:
+                self._send_notification_email(instance)
+            except Exception as e:
+                pass
 
     def _send_notification_email(self, message):
         """Send HTML e-mail notification to all superusers"""
