@@ -83,6 +83,8 @@ JAZZMIN_SETTINGS = {
         "portfolio": "fas fa-briefcase",
         "portfolio.Project": "fas fa-folder-open",
         "portfolio.Skill": "fas fa-lightbulb",
+        "portfolio.Certificate": "fas fa-certificate",
+        "portfolio.Achievement": "fas fa-trophy",
         "portfolio.Category": "fas fa-tags",
         "portfolio.Experience": "fas fa-briefcase",
         "portfolio.Education": "fas fa-graduation-cap",

@@ -2,7 +2,7 @@ from django.contrib import admin
 from parler.admin import TranslatableAdmin
 
 from core.admin import ImageInline
-from .models import Skill, Project, Experience, Education
+from .models import Skill, Certificate, Achievement, Project, Experience, Education
 
 
 @admin.register(Skill)
@@ -13,6 +13,61 @@ class SkillAdmin(TranslatableAdmin):
 
     def get_prepopulated_fields(self, request, obj=None):
         return {"slug": ("name",)}
+
+
+@admin.register(Certificate)
+class CertificateAdmin(TranslatableAdmin):
+    list_display = (
+        "name",
+        "issuer",
+        "issue_date",
+        "expiration_date",
+        "featured",
+        "sort_order",
+        "created_at",
+        "updated_at",
+    )
+    list_filter = ("featured",)
+    search_fields = (
+        "translations__name",
+        "translations__slug",
+        "translations__issuer",
+        "credential_id",
+    )
+    filter_horizontal = ("skills",)
+    ordering = ("-featured", "-issue_date", "sort_order")
+    inlines = [ImageInline]
+
+    def get_prepopulated_fields(self, request, obj=None):
+        return {"slug": ("name",)}
+
+
+@admin.register(Achievement)
+class AchievementAdmin(TranslatableAdmin):
+    list_display = (
+        "title",
+        "issuer",
+        "achievement_type",
+        "date",
+        "position",
+        "featured",
+        "sort_order",
+        "created_at",
+        "updated_at",
+    )
+    list_filter = ("achievement_type", "featured")
+    search_fields = (
+        "translations__title",
+        "translations__slug",
+        "translations__issuer",
+        "position",
+    )
+    filter_horizontal = ("tags", "skills")
+    ordering = ("-featured", "-date", "sort_order")
+    inlines = [ImageInline]
+
+    def get_prepopulated_fields(self, request, obj=None):
+        return {"slug": ("title",)}
 
 
 @admin.register(Project)

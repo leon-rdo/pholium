@@ -35,6 +35,139 @@ class Skill(TranslatableModel, TimeStamped):
         return self.safe_translation_getter("name", any_language=True) or ""
 
 
+class Certificate(TranslatableModel, TimeStamped):
+    translations = TranslatedFields(
+        name=models.CharField(_("Certificate Name"), max_length=200),
+        slug=models.SlugField(_("Slug"), max_length=220, blank=True, db_index=True),
+        issuer=models.CharField(_("Issuer/Institution"), max_length=160),
+        description=models.TextField(_("Description"), blank=True),
+    )
+
+    issue_date = models.DateField(_("Issue Date"))
+    expiration_date = models.DateField(_("Expiration Date"), null=True, blank=True)
+    credential_id = models.CharField(_("Credential ID"), max_length=120, blank=True)
+    credential_url = models.URLField(
+        _("Credential URL"), blank=True, null=True, help_text=_("URL for verification")
+    )
+
+    skills = models.ManyToManyField(
+        "portfolio.Skill",
+        verbose_name=_("Related Skills"),
+        blank=True,
+        related_name="certificates",
+    )
+
+    images = GenericRelation(
+        "core.Image", related_query_name="certificates", verbose_name=_("Images")
+    )
+
+    featured = models.BooleanField(_("Featured"), default=False)
+    sort_order = models.PositiveIntegerField(_("Sort order"), default=0)
+
+    class Meta:
+        verbose_name = _("Certificate")
+        verbose_name_plural = _("Certificates")
+        ordering = ["-featured", "-issue_date", "sort_order"]
+
+    def save(self, *args, **kwargs):
+        if not self.slug and (self.name or ""):
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.safe_translation_getter("name", any_language=True) or ""
+
+    @property
+    def is_expired(self):
+        """Check if certificate is expired"""
+        if self.expiration_date:
+            from django.utils import timezone
+
+            return self.expiration_date < timezone.now().date()
+        return False
+
+
+class Achievement(TranslatableModel, TimeStamped):
+    AWARD, RECOGNITION, COMPETITION, PUBLICATION, PATENT, OTHER = (
+        "award",
+        "recognition",
+        "competition",
+        "publication",
+        "patent",
+        "other",
+    )
+
+    TYPE_CHOICES = [
+        (AWARD, _("Award/Prize")),
+        (RECOGNITION, _("Recognition")),
+        (COMPETITION, _("Competition")),
+        (PUBLICATION, _("Publication")),
+        (PATENT, _("Patent")),
+        (OTHER, _("Other")),
+    ]
+
+    translations = TranslatedFields(
+        title=models.CharField(_("Title"), max_length=200),
+        slug=models.SlugField(_("Slug"), max_length=220, blank=True, db_index=True),
+        issuer=models.CharField(_("Issuer/Organization"), max_length=160),
+        description=models.TextField(_("Description"), blank=True),
+    )
+
+    achievement_type = models.CharField(
+        _("Type"), max_length=20, choices=TYPE_CHOICES, default=OTHER
+    )
+
+    date = models.DateField(_("Date"))
+    url = models.URLField(_("Related URL"), blank=True, null=True)
+
+    position = models.CharField(
+        _("Position/Ranking"),
+        max_length=50,
+        blank=True,
+        help_text=_("e.g., '1st Place', 'Top 10', 'Finalist'"),
+    )
+
+    tags = models.ManyToManyField(
+        "core.Tag", verbose_name=_("Tags"), blank=True, related_name="achievements"
+    )
+
+    skills = models.ManyToManyField(
+        "portfolio.Skill",
+        verbose_name=_("Related Skills"),
+        blank=True,
+        related_name="achievements",
+    )
+
+    project = models.ForeignKey(
+        "portfolio.Project",
+        verbose_name=_("Related Project"),
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name="achievements",
+    )
+
+    images = GenericRelation(
+        "core.Image", related_query_name="achievements", verbose_name=_("Images")
+    )
+
+    featured = models.BooleanField(_("Featured"), default=False)
+    sort_order = models.PositiveIntegerField(_("Sort order"), default=0)
+
+    class Meta:
+        verbose_name = _("Achievement")
+        verbose_name_plural = _("Achievements")
+        ordering = ["-featured", "-date", "sort_order"]
+
+    def save(self, *args, **kwargs):
+        if not self.slug and (self.title or ""):
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.safe_translation_getter("title", any_language=True) or ""
+
+
 class Project(TranslatableModel, TimeStamped):
     DRAFT, PUBLISHED, ARCHIVED = "draft", "published", "archived"
     STATUS_CHOICES = [
