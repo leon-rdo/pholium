@@ -19,6 +19,8 @@ hyperlink==21.0.0
 idna==3.11
 incremental==24.7.2
 pillow==11.3.0
+psycopg==3.2.13
+psycopg-binary==3.2.13
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pycparser==2.23
